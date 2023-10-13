@@ -161,6 +161,55 @@ SELECT
 		 ELSE 'equator'
 	END AS 'N_S_hemisphere'
 FROM countries;
+
+SELECT 
+	country ,
+	date,
+	confirmed 
+FROM covid19_basic
+WHERE country = 'Austria'
+ORDER BY date desc;
+
+SELECT 
+	country,
+	date,
+	deaths 
+FROM covid19_basic
+WHERE country = 'Czechia'
+ORDER BY date desc; 
+
+SELECT 
+	date,
+	sum(confirmed) AS number_of_deaths_august
+FROM covid19_basic
+WHERE date = '2020-08-31'; 
+
+SELECT 
+	DISTINCT (province)
+FROM covid19_detail_us
+ORDER BY province;
+
+SELECT 
+	country,
+	date,
+	recovered,
+	confirmed,
+	confirmed - recovered AS ill
+FROM covid19_basic
+WHERE country = 'Czechia'
+ORDER BY date DESC;
+
+SELECT 
+	country,
+	confirmed,
+	date
+FROM covid19_basic
+WHERE date = '2020-07-01'
+ORDER BY confirmed DESC 
+LIMIT 10;
+
+
+
 	
 
 
