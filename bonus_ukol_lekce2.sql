@@ -78,6 +78,133 @@ SELECT
 FROM v_life_expectancy_comparison
 WHERE country IN ('zambia', 'mozambique', 'malawi', 'angola')
 ORDER BY difference;
+
+SELECT 
+	country, religion 
+FROM countries
+WHERE religion = 'Buddhism';
+
+SELECT 
+	country, independence_date 
+FROM countries
+WHERE independence_date < 1500;
+
+SELECT 
+	country, elevation 
+FROM countries
+WHERE elevation > 2000;
+
+SELECT 
+	country, national_symbol 
+FROM countries
+WHERE national_symbol IS NULL OR national_symbol != 'animal';
+
+SELECT 
+	country, religion 
+FROM countries
+WHERE religion != 'Christianity' AND religion != 'Islam';
+
+SELECT country , capital_city , religion , population 
+FROM countries c 
+WHERE religion NOT IN ('Christianity', 'Islam')
+ORDER BY population DESC
+;
+
+SELECT
+	country, currency_code, religion 
+FROM countries
+WHERE currency_code = 'EUR' AND religion != 'Christianity';
+
+SELECT 
+	country,yearly_average_temperature  
+FROM countries
+WHERE yearly_average_temperature <= 0 OR yearly_average_temperature >= 30;
+
+SELECT 
+	country, independence_date 
+FROM countries
+WHERE independence_date >= 1800 AND independence_date < 1900;
+
+SELECT 
+	population, surface_area, 
+	round(population/surface_area, 2) AS pop_density, 
+	round(population_density, 2), 
+	round(population/surface_area, 2) -  round(population_density, 2) AS difference
+FROM countries;
+
+SELECT 
+	country, 
+	yearly_average_temperature,
+	9/5 * yearly_average_temperature + 32 AS temp_in_fahrenheit 
+FROM countries
+WHERE yearly_average_temperature IS NOT NULL;
+
+
+SELECT 
+	country, yearly_average_temperature,
+	CASE WHEN yearly_average_temperature < 0 THEN 'freezing'
+		 WHEN yearly_average_temperature >= 0 AND yearly_average_temperature < 10 THEN 'chilly'
+		 WHEN yearly_average_temperature >= 10 AND yearly_average_temperature < 20 THEN 'mild'
+		 WHEN yearly_average_temperature >= 20 AND yearly_average_temperature < 30 THEN 'warm'
+		 WHEN yearly_average_temperature > 30 THEN 'scorching'
+	END AS climate
+FROM countries
+WHERE yearly_average_temperature IS NOT null;
+
+
+SELECT 
+	country, 
+	north,
+	south,
+	CASE WHEN south > 0 THEN 'north'
+		 WHEN north < 0 THEN 'south'
+		 ELSE 'equator'
+	END AS 'N_S_hemisphere'
+FROM countries;
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
    
 
