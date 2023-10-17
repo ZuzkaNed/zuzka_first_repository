@@ -288,6 +288,56 @@ SELECT
 	END AS flag_end_a
 FROM covid19_basic_differences
 ;
+CREATE VIEW v_zuzka_nedvedova_usa_china_inda AS 
+	SELECT 
+		*
+	FROM covid19_basic
+	WHERE country IN ('india', 'china', 'usa') ;
+
+SELECT 
+*
+FROM v_zuzka_nedvedova_usa_china_inda;
+
+SELECT 
+	*
+FROM covid19_basic
+WHERE country IN (
+	SELECT 
+		country
+	FROM lookup_table 
+		WHERE population > 100000000);
+	
+SELECT 
+*
+FROM covid19_basic 
+	WHERE country IN (
+		SELECT 
+			DISTINCT(country)
+		FROM covid19_detail_us);
+	
+SELECT 
+*
+FROM covid19_basic
+WHERE country IN (
+	SELECT 
+		country 
+	FROM covid19_basic_differences
+	WHERE confirmed > 10000);
+
+SELECT 
+*
+FROM covid19_basic
+WHERE country NOT IN (
+	SELECT 
+		country 
+	FROM covid19_basic_differences
+	WHERE confirmed > 1000);
+
+SELECT 
+*
+FROM covid19_basic
+WHERE country NOT LIKE 'a%';
+
 
 
 
