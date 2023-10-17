@@ -236,6 +236,60 @@ SELECT
 FROM covid19_basic
 ORDER BY country, date desc;
 
+SELECT 
+	*,
+	CASE WHEN confirmed > 10000 THEN 1
+	ELSE 0
+	END AS confirmed_more_than_10000
+FROM covid19_basic_differences
+WHERE date = '2020-08-30'
+ORDER BY confirmed DESC;
+
+
+SELECT 
+	*,
+	CASE WHEN country IN ('Germany','France','Spain') THEN 'Evropa'
+	ELSE 'ostatni'
+	END AS flag_evropa
+FROM covid19_basic_differences
+WHERE country = 'France';
+
+SELECT 
+	*,
+	CASE WHEN country LIKE 'Ge%' THEN 'GE Zeme'
+	ELSE 'ostatni'
+	END AS flag_ge
+FROM covid19_basic_differences
+WHERE country = 'germany';
+
+SELECT 
+	*,
+	CASE WHEN confirmed <= 1000 THEN 'less than 1000'
+		 WHEN confirmed BETWEEN 1000 AND 10000 THEN '1000 - 10000'
+		 WHEN confirmed > 10000 THEN 'more than 10000'
+	END AS category
+FROM covid19_basic_differences
+WHERE confirmed IS NOT NULL
+ORDER BY date desc;
+
+SELECT 
+	*,
+	CASE WHEN country IN ('china', 'usa', 'india')  AND confirmed > 10000 THEN 1
+		 ELSE 0
+	END AS china_india_usa
+FROM covid19_basic_differences
+WHERE country = 'india'
+ORDER BY date DESC;
+
+SELECT 
+	*,
+	CASE WHEN country LIKE '%a' THEN 'A zeme'
+	ELSE 'ne A zeme'
+	END AS flag_end_a
+FROM covid19_basic_differences
+;
+
+
 
 
 
