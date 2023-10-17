@@ -208,6 +208,37 @@ WHERE date = '2020-07-01'
 ORDER BY confirmed DESC 
 LIMIT 10;
 
+SELECT
+	*,
+	CASE WHEN confirmed > 10000 THEN 1
+	ELSE 0
+	END AS more_than_10000
+FROM covid19_basic_differences 
+WHERE date = '2020-08-30'
+ORDER BY confirmed DESC; 
+
+SELECT
+	*,
+	CASE WHEN confirmed > 10000 THEN 1
+	ELSE 0
+	END AS more_than_10000
+FROM covid19_basic 
+WHERE date = '2020-08-30'
+ORDER BY confirmed DESC; 
+
+SELECT 
+*
+FROM covid19_detail_us
+ORDER BY date desc;
+
+SELECT 
+* 
+FROM covid19_basic
+ORDER BY country, date desc;
+
+
+
+
 
 
 	
