@@ -164,6 +164,20 @@ FROM czechia_price
 GROUP BY category_code
 ORDER BY difference;
 
+SELECT 
+	category_code,
+	region_code,
+	min(value),
+	max(value),
+	round(avg(value),2) AS average
+FROM czechia_price
+GROUP BY category_code,region_code
+ORDER BY round(avg(value),2) desc;
+
+SELECT 
+*
+FROM czechia_price;
+
 
 
 
