@@ -178,6 +178,58 @@ SELECT
 *
 FROM czechia_price;
 
+SELECT SQRT(16);
+SELECT 10/2;
+SELECT FLOOR(1.56);
+SELECT FLOOR(-1.56);
+SELECT CEIL(1.56);
+SELECT CEIL(-1.56);
+SELECT ROUND(1.56);
+SELECT ROUND(-1.56);
+
+SELECT
+	category_code, 
+	round(sum(value),2) AS sum_value,
+	round (round(sum(value),2) / count(value),2) AS average_price
+FROM czechia_price
+GROUP BY category_code
+ORDER BY average_price;
+
+SELECT 
+	count(category_code)
+FROM czechia_price 
+WHERE category_code = '111101';
+
+SELECT 1 + '1';
+
+SELECT 1 + '12tatata';
+
+SELECT CONCAT('Hi, ', 'Engeto lektor here!');
+
+SELECT CONCAT('We have ', COUNT(DISTINCT category_code), ' price categories.') AS info
+FROM czechia_price;
+
+SELECT name,
+    SUBSTRING(name, 1, 2) AS prefix,
+    SUBSTRING(name, -2, 2) AS suffix,
+    LENGTH(name),
+    CHAR_LENGTH(name) 
+FROM czechia_price_category;
+
+SELECT 5 % 2;
+SELECT 14 % 5;
+SELECT 15 % 5;
+
+SELECT
+    country, `year`, population, population % 2 AS division_rest
+FROM economies e
+WHERE population IS NOT NULL;	
+
+
+
+
+
+
 
 
 
