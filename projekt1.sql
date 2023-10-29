@@ -9,7 +9,7 @@ SELECT
 	industry_branch_code,
 	avg(value) AS avg_payroll_per_year
 FROM czechia_payroll
-WHERE value_type_code = 5958 AND industry_branch_code = 'a' AND calculation_code = '100'
+WHERE value_type_code = 5958 AND industry_branch_code = 'a'
 GROUP BY payroll_year;
 
 SELECT 
