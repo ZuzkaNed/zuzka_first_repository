@@ -98,6 +98,113 @@ LEFT JOIN czechia_district cd
 LEFT JOIN czechia_district cd2
     ON hp.residence_district_code = cd2.code;
 
+  
+SELECT 
+*
+FROM czechia_price cp, czechia_price_category cpc
+WHERE cp.category_code  = cpc.code ;
+
+SELECT 
+*
+FROM czechia_price_category;
+
+SELECT 
+*
+FROM czechia_price cp
+CROSS JOIN czechia_price_category cpc 
+	ON cp.category_code = cpc.code;
+
+SELECT 
+	cr.name AS first_region,
+	cr2.name AS second_region
+FROM czechia_region cr
+CROSS JOIN czechia_region cr2
+WHERE cr.code != cr2.code;
+
+SELECT category_code, value
+FROM czechia_price
+WHERE region_code = 'CZ064'
+UNION  
+SELECT category_code, value
+FROM czechia_price
+WHERE region_code = 'CZ010';
+
+SELECT 
+*
+FROM czechia_region;
+
+SELECT 
+*
+FROM czechia_district;
+
+SELECT 
+*
+FROM (
+SELECT code, name, 'region' AS country_part
+FROM czechia_region
+UNION
+SELECT code, name, 'district' AS country_part
+FROM czechia_district) AS country_parts
+ORDER BY code;
+
+
+SELECT category_code, value
+FROM czechia_price
+WHERE region_code = 'CZ064'
+INTERSECT
+SELECT category_code, value
+FROM czechia_price
+WHERE region_code = 'CZ010';
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 		
 
