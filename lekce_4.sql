@@ -157,10 +157,37 @@ FROM czechia_price
 WHERE region_code = 'CZ010';
    
    
+WITH high_price AS (
+    SELECT category_code AS code
+    FROM czechia_price
+    WHERE value > 150
+)
+SELECT DISTINCT cpc.name
+FROM high_price hp
+JOIN czechia_price_category cpc
+    ON hp.code = cpc.code;
+
+
+
+
+SELECT *
+FROM czechia_price_category;
    
-   
-   
-   
+ WITH large_gdp_area AS (
+    SELECT *
+    FROM economies
+    WHERE GDP > 70000000000
+)
+SELECT
+    ROUND( AVG(taxes), 2) AS taxes_average
+FROM large_gdp_area;
+
+SELECT 
+	round(avg(taxes),2) AS avarag_taxes
+FROM economies
+WHERE GDP > 70000000000;
+
+
    
    
    
