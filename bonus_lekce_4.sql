@@ -98,3 +98,41 @@ SELECT
 *
 FROM religions;
 
+SELECT 
+*
+FROM lookup_table
+WHERE province IS null;
+
+SELECT 
+*
+FROM covid19_basic cb
+LEFT JOIN covid19_basic_differences cbd
+ON cb.country = cbd.country 
+AND cb.date = cbd.date;
+
+SELECT
+        base.date,
+        (sum(base.confirmed)*1000000)/sum(a.population) as confirmed_per_milion
+FROM (
+          SELECT 
+                date,
+                country,
+                confirmed 
+          FROM covid19_basic cb
+         ) base
+LEFT JOIN 
+         (
+          SELECT
+                  country,
+                  population
+          FROM lookup_table lt 
+          WHERE province is null
+         ) a
+ON base.country = a.country
+GROUP BY base.date
+ORDER BY base.date
+
+
+
+
+
