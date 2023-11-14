@@ -82,17 +82,17 @@ FROM czechia_payroll
 WHERE value_type_code = 5958 AND calculation_code = 100 AND payroll_year = 2001;
 
 select 
-	ap.payroll_year,
-	apmp.`year(cp.date_from)` ,
-	ap.average_payroll_per_year,
-	apmp.name,
-	apmp.`round(avg(cp.value),2)` AS average_price,
+	ap.payroll_year AS obdobi,
+	ap.average_payroll_per_year AS prumerna_rocni_mzda,
+	apmp.name AS potravina,
+	apmp.`round(avg(cp.value),2)` AS prumerna_cena_potraviny,
 	apmp.price_value,
 	apmp.price_unit,
 	round(ap.average_payroll_per_year / apmp.`round(avg(cp.value),2)`,2) AS how_many_I_can_buy
 FROM t_average_payroll_per_year ap
 JOIN t_average_prices_milk_bread apmp
-	ON ap.payroll_year = apmp.`year(cp.date_from)` ;
+	ON ap.payroll_year = apmp.`year(cp.date_from)` 
+WHERE ap.payroll_year = 2006 OR ap.payroll_year = 2018;
 
 
 SELECT 
