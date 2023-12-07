@@ -26,7 +26,7 @@ SELECT
 	payroll_year,
 	payroll_quarter 
 FROM czechia_payroll
-WHERE value_type_code = 5958 AND calculation_code = 200 -- prumerna mzda (prepoctena na plny uvazek) za kazde odvetvi od roku 2000 do 2021 --
+WHERE value_type_code = 5958 AND calculation_code = 200 -- prumerna ctvrletní mzda (prepoctena na plny uvazek) za kazde odvetvi od roku 2000 do 2021 --
 ;  
 
 
