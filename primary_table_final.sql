@@ -39,7 +39,8 @@ SELECT
 	round(payroll.average_payroll_per_year/food.average_price,2) AS availability_of_product
 FROM average_food_price food		
 JOIN t_average_payroll_per_industry_and_year payroll
-ON food.reference_period = payroll.reference_period ;
+ON food.reference_period = payroll.reference_period 
+;
 
 
 
